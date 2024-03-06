@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hacker Login</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #000;
+        color: #fff;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    #login-box {
+        background-color: #222;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+    input[type="text"], input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+        border: none;
+        background-color: #333;
+        color: #fff;
+        border-radius: 5px;
+    }
+    input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: none;
+        background-color: #4caf50;
+        color: #fff;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+</style>
+</head>
+<body>
+<div id="login-box">
+    <h2>Hacker Login</h2>
+    <form id="login-form">
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+        <input type="submit" value="Login">
+    </form>
+</div>
+
+<script>
+    document.getElementById('login-form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent default form submission
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+
+        // Your authentication logic here (can be hardcoded for demo purposes)
+        if (username === 'hacker' && password === 'password') {
+            alert('Welcome, Hacker!');
+            // Set authentication flag in session storage
+            sessionStorage.setItem('authenticated', 'true');
+            // Redirect to another page or perform actions after successful login
+            window.location.href = 'index.html'; // Redirect to home page
+        } else {
+            alert('Invalid username or password. Try again!');
+            // Clear input fields or provide feedback to the user
+        }
+    });
+
+    // Check if the user is already authenticated and redirect to home page
+    window.onload = function() {
+        if (sessionStorage.getItem('authenticated') === 'true') {
+            window.location.href = 'index.html';
+        }
+    };
+</script>
+</body>
+</html>
