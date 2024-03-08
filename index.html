@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Selection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        select, button {
+            padding: 10px;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #websiteContainer {
+            width: 100%;
+            height: calc(100vh - 100px); /* Adjust height to fit iframe and leave room for button */
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Select a Game or App</h1>
+        <select id="gameSelect">
+            <option value="">Select a game or app...</option>
+            <option value="https://www.amazon.com/">Amazon</option>
+            <option value="https://www.crazygames.com/">Crazy Games</option>
+            <option value="https://www.tiktok.com/">TikTok</option>
+            <option value="https://www.slopegame.com/">Slope</option>
+            <option value="https://www.subwaysurfers.com/">Subway Surfers</option>
+            <option value="https://www.geometrydash.com/">Geometry Dash</option>
+            <option value="https://www.miniclip.com/games/en/">Miniclip</option>
+            <option value="https://www.kongregate.com/">Kongregate</option>
+            <option value="https://www.agame.com/">Agame</option>
+            <option value="https://www.pogo.com/">Pogo</option>
+            <option value="https://www.innersloth.com/gameAmongUs.php">Among Us</option>
+            <option value="https://www.discord.com/">Discord</option>
+        </select>
+        <button onclick="openSelectedGame()">Go</button>
+    </div>
+    
+    <iframe id="websiteContainer" frameborder="0"></iframe>
+
+    <script>
+        function openSelectedGame() {
+            var select = document.getElementById("gameSelect");
+            var selectedOption = select.options[select.selectedIndex];
+            var url = selectedOption.value;
+            var iframe = document.getElementById("websiteContainer");
+
+            if (url !== "") {
+                iframe.src = url;
+            } else {
+                alert("Please select a game or app.");
+            }
+        }
+    </script>
+</body>
+</html>
